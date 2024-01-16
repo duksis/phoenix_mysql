@@ -8,6 +8,18 @@ defmodule PhoenixMysql.MixProject do
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
+      test_coverage: [
+        ignore_modules: [
+          PhoenixMysqlWeb.Layouts,
+          PhoenixMysqlWeb.PageHTML,
+          PhoenixMysqlWeb.CoreComponents,
+          PhoenixMysql.DataCase,
+          PhoenixMysql.Repo,
+          PhoenixMysqlWeb.ErrorHTML,
+          PhoenixMysqlWeb.Router,
+          ~r/\.LiveView\./
+        ]
+      ],
       aliases: aliases(),
       deps: deps()
     ]
