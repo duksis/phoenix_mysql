@@ -10,6 +10,7 @@ config :phoenix_mysql, PhoenixMysql.Repo,
   password: "root",
   hostname: "localhost",
   database: "phoenix_mysql_test#{System.get_env("MIX_TEST_PARTITION")}",
+  port: System.get_env("DB_PORT", "3306") |> String.to_integer(),
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
