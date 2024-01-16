@@ -3,8 +3,8 @@ import Config
 # Configure your database
 config :phoenix_mysql, PhoenixMysql.Repo,
   username: "root",
-  password: "",
-  hostname: "localhost",
+  password: "root",
+  hostname: "127.0.0.1",
   database: "phoenix_mysql_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
