@@ -15,6 +15,14 @@ defmodule PhoenixMysql.AccountsTest do
       assert Accounts.list_users() == [user]
     end
 
+    test "list_users_by_id/1 returns users with given id's in the order of the given ids" do
+      user1 = user_fixture(name: "User 1")
+      user2 = user_fixture(name: "User 2")
+      user3 = user_fixture(name: "User 3")
+
+      assert Accounts.list_users_by_ids([user3.id, user1.id, user2.id]) == [user3, user1, user2]
+    end
+
     test "get_user!/1 returns the user with given id" do
       user = user_fixture()
       assert Accounts.get_user!(user.id) == user
