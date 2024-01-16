@@ -24,11 +24,8 @@ defmodule PhoenixMysql.Accounts do
   def list_users_by_ids(ids) do
     from(User)
     |> where([u], u.id in ^ids)
+    |> order_by([u], fragment("FIELD(?, ?)", u.id, splice(^ids)))
     |> Repo.all()
-    # Sort list by given ID order
-    |> Enum.sort_by(&Enum.find_index(ids, fn x -> x == &1.id end))
-    # mysql: ORDER BY FIELD(id, 3, 1, 2)
-    # order_by(fragment("FIELD(id, ?, ?, ?)", ^ids))
   end
 
   @doc """
